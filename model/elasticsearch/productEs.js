@@ -32,4 +32,38 @@ async function getIndexProduct() {
     }
 }
 
-module.exports = {getIndexProduct: getIndexProduct};
+/**
+ * get product by the type, page number and size
+ * @param type
+ * @param from
+ * @param size
+ * @returns {Promise.<Array>}
+ */
+async function getProductByType(type, from, size) {
+    try {
+        var response = await esClient.search({
+            index: "product",
+            type: "product",
+            body: {
+                sort: [{"date": {"order": "desc"}}],
+                query: {match: {type: type}},
+                from: from,
+                size: size
+            }
+        });
+        var result = [];
+        if (response && response.hits && response.hits.hits) {
+            for (var i = 0; i < response.hits.hits.length; i++) {
+                result.push(response.hits.hits[i]._source);
+            }
+        }
+        return result;
+    } catch (e) {
+        logger.error("getProductByType error in productEs: " + e);
+        throw e;
+    }
+}
+module.exports = {
+    getIndexProduct: getIndexProduct,
+    getProductByType: getProductByType
+};

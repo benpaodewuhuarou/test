@@ -17,4 +17,23 @@ async function getIndexProduct() {
     }
 }
 
-module.exports = {getIndexProduct: getIndexProduct};
+/**
+ * get product by the type, page number and size
+ * @param type
+ * @param from
+ * @param size
+ * @returns {Promise.<Array>}
+ */
+async function getProductByType(type, from, size) {
+    try {
+        return await productEs.getProductByType(type, from, size);
+    } catch (e) {
+        logger.error("getProductByType error in productService error: " + e);
+        throw e;
+    }
+}
+
+module.exports = {
+    getIndexProduct: getIndexProduct,
+    getProductByType: getProductByType
+};
