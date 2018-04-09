@@ -2,8 +2,7 @@
  * Created by shizekang on 3/26/2018.
  */
 var getCollectionTool = require("./getCollectionTool");
-var getLoggerTool = require('../../tool/getLoggerTool');
-var logger = getLoggerTool.getLogger();
+var logger= require('../../tool/getLoggerTool');
 
 /**
  * add user to mongodb atlas

@@ -9,82 +9,131 @@ const esClient = new elasticsearch.Client({
 
 
 // esClient.index({
-//     index: 'shmall-user',
-//     id: '1qqq11',
-//     type: 'user',
+//     index: 'productindex',
+//     type: 'prodcut',
+//     id: '1',
 //     body: {
 //         "username" : "1qqq11",
-//         "email" : "658912539@qq.com",
-//         "password" : "111111111111111111",
-//         "address" : "",
-//         "phoneNumber" : "",
-//         "wechat" : "",
-//         "restrict" : "false",
-//         "credit" : "100",
-//         "administrator" : "false"
 //     }
 // },function(err,resp,status) {
 //     console.log(resp);
 // });
 
+// { itemId: '99999999999',
+//     title: 'testTitle',
+//     type: '3C',
+//     allowed: 'true',
+//     username: '1qqq11',
+//     price: '$60.00',
+//     degree: '90',
+//     location: 'Jersey City',
+//     phoneNumber: '5513236575',
+//     wechat: 'xx1254654321143',
+//     email: '1111111@shmall.com',
+//     transmode: 'offline',
+//     image: [ '', '', '' ],
+//     date: 1523243670009,
+//     detail: 'It\'s test item!! don\'t pay it.',
+//     deleted: 'false' }
+
+// esClient.delete({
+//     index: 'test11',
+//     type: 'test111',
+//     id: "8"
+// }, function (error, response) {
+//     console.log(response);
+// });
+
 
 // esClient.create({
-//     index: 'shmall-product',
+//     index: 'productindex',
 //     type: 'product',
 //     id: '888888888888',
 //     body: {
-//         "itemId" : "888888888888",
-//         "title" : "testTitle2",
-//         "type" : "3C",
-//         "allowed" : "true",
-//         "username" : "1qqq11",
-//         "price" : "$60.00",
-//         "degree" : "90",
-//         "location" : "Jersey City",
-//         "phoneNumber" : "5513236575",
-//         "wechat" : "xx1254654321143",
-//         "email" : "21321@shmall.com",
-//         "transmode" : "offline",
-//         "image" : [
-//             "",
-//             "",
-//             ""
-//         ],
-//         "date" : "2018-1-25",
-//         "detail" : "It's test item!! don't pay it.",
-//         "deleted" : "false"
+//         itemId: '888888888888',
+//         dd: "11"
+//         // title: 'testTitle2',
+//         // type: '3C',
+//         // allowed: 'true',
+//         // username: '1qqq11',
+//         // price: 60.00,
+//         // degree: '90',
+//         // location: 'Jersey City',
+//         // phoneNumber: '5513236575',
+//         // wechat: 'xx1254654321143',
+//         // email: '21321@shmall.com',
+//         // transmode: 'offline',
+//         // image: [ '', '', '' ],
+//         // date: Date.now(),
+//         // detail: 'It\'s test item!! don\'t pay it.',
+//         // deleted: 'false'
 //     }
 // }, function (error, response) {
 //     console.log(response);
 // });
 
-// esClient.delete({
-//     index: 'shmall',
-//     type: 'user',
-//     id: '1qq7733332'
+
+// esClient.create({
+//     index: 'test11',
+//     type: "test111",
+//     id: '8',
+//     body: {
+//         itemId: '8',
+//         gg: 5,
+//         date: Date.now()
+//     }
 // }, function (error, response) {
 //     console.log(response);
 // });
+//
+//
+// esClient.index({
+//     index: 'product',
+//     type: "product",
+//     id: '99999999999',
+//     body: {
+//         itemId: '99999999999',
+//         title: 'testTitle',
+//         type: '3C',
+//         allowed: 'true',
+//         username: '1qqq11',
+//         price: 60.00,
+//         degree: '90',
+//         location: 'Jersey City',
+//         phoneNumber: '5513236575',
+//         wechat: 'xx1254654321143',
+//         email: '1111111@shmall.com',
+//         transmode: 'offline',
+//         image: [ '', '', '' ],
+//         date: Date.now(),
+//         detail: 'It\'s test item!! don\'t pay it.',
+//         deleted: 'false'
+//     }
+// }, function (error, response) {
+//     console.log(response);
+// });
+
+
 
 // esClient.get({
-//     index: 'shmall-product',
-//     type: 'prduct',
-//     id: '99999999999'
+//     index: 'shmall',
+//     type: 'shmall-product',
+//     id: '888888888888'
 // }, function (error, response) {
 //     console.log(response);
 // });
 
 
-//
+
 // esClient.search({
-//     index: 'shmall-user',
-//     type: 'user',
+//     index: 'product',
+//     type: 'product',
 //     body: {
-//         query: {
-//             match: { "username": "1qqq11" }
-//         },
+//         sort: [{date: {"order": "asc"}}],
+//         query: {match_all : {}}
 //     }
 // }, function (error, response) {
+//     // console.log(response);
 //     for (var i = 0; i < response.hits.hits.length; i++) {
 //         console.log(response.hits.hits[i]);
 //     }

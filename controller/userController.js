@@ -2,8 +2,7 @@
  * Created by shizekang on 3/28/2018.
  */
 var userService = require("../service/userService");
-var getLoggerTool = require("../tool/getLoggerTool");
-var logger = getLoggerTool.getLogger();
+var logger = require("../tool/getLoggerTool");
 
 /**
  * add user, the input's type should be the json

@@ -7,8 +7,7 @@ bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 var client = redis.createClient("11769", "redis-11769.c15.us-east-1-4.ec2.cloud.redislabs.com");
 client.auth("b6aSqiav0OOhtB9BYJPkkr24tQE1jEJ6");
-var getLoggerTool = require('../../tool/getLoggerTool');
-var logger = getLoggerTool.getLogger();
+var logger = require('../../tool/getLoggerTool');
 
 /**
  * add username collection and email collection to Redis

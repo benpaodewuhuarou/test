@@ -12,5 +12,5 @@ function getLogger() {
     return logger;
 }
 
-module.exports = {getLogger: getLogger};
+module.exports = getLogger();
 
