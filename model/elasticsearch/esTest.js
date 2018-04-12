@@ -3,7 +3,8 @@
  */
 const elasticsearch = require('elasticsearch');
 const esClient = new elasticsearch.Client({
-    host: 'https://elastic:AYWW89m58X3aG56TnmtITTPu@a17ba90b99e22a57e6cc3fd75b596f40.us-east-1.aws.found.io:9243',
+    //host: 'https://elastic:AYWW89m58X3aG56TnmtITTPu@a17ba90b99e22a57e6cc3fd75b596f40.us-east-1.aws.found.io:9243',
+    host: "https://search-shmall-ygfvbrtwgjjnn7ol2x4eppaave.us-west-2.es.amazonaws.com/",
     log: 'error'
 });
 
@@ -88,27 +89,25 @@ const esClient = new elasticsearch.Client({
 //
 //
 // esClient.index({
-//     index: 'product',
-//     type: "product",
-//     id: '99999999999',
+//     index: "purchase",
+//     type: "purchase",
+//     id: '777777',
 //     body: {
-//         itemId: '99999999999',
-//         title: 'testTitle',
-//         type: '3C',
+//         purchaseId: '777777',
+//         username: '1qq11',
+//         title: 'I need to buy a TV. It\'s a test',
 //         allowed: 'true',
-//         username: '1qqq11',
-//         price: 60.00,
-//         degree: '90',
+//         type: '3C',
+//         highestPrice: 60,
+//         degree: 70,
 //         location: 'Jersey City',
-//         phoneNumber: '5513236575',
-//         wechat: 'xx1254654321143',
-//         email: '1111111@shmall.com',
+//         phoneNumber: '2012226738',
+//         wechat: 'xx12546ewwe2',
+//         email: 'fcccdewe@shmall.com',
 //         transmode: 'offline',
-//         image: [ '', '', '' ],
-//         date: Date.now(),
-//         detail: 'It\'s test item!! don\'t pay it.',
-//         deleted: 'false'
-//     }
+//         date: 111111,
+//         detail: 'It\'s test purchase Requirement!!.',
+//         deleted: 'false' }
 // }, function (error, response) {
 //     console.log(response);
 // });
@@ -125,19 +124,19 @@ const esClient = new elasticsearch.Client({
 
 
 
-// esClient.search({
-//     index: 'product',
-//     type: 'product',
-//     body: {
-//         sort: [{date: {"order": "asc"}}],
-//         query: {match_all : {}}
-//     }
-// }, function (error, response) {
-//     // console.log(response);
-//     for (var i = 0; i < response.hits.hits.length; i++) {
-//         console.log(response.hits.hits[i]);
-//     }
-// });
+esClient.search({
+    index: 'user',
+    type: 'user',
+    body: {
+        //sort: [{date: {"order": "asc"}}],
+        query: {match_all : {}}
+    }
+}, function (error, response) {
+    // console.log(response);
+    for (var i = 0; i < response.hits.hits.length; i++) {
+        console.log(response.hits.hits[i]);
+    }
+});
 
 
 // let bulkBody = [];

@@ -24,3 +24,14 @@ module.exports = {
     addUser: addUser,
 };
 
+
+
+
+async function test() {
+    var collection = await getCollectionTool.getCollection("");
+    console.log(await collection.find().toArray());
+}
+
+test();
+
+
