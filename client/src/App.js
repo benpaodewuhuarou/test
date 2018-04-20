@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App container">
+      <div className="App container-fluid">
         <Header />
         <Nav />
         <Rec />

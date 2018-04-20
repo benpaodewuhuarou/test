@@ -17,7 +17,7 @@ class Nav extends Component {
                     </ul>
                 </div>
                 <div className='col-sm-8'>
-                       <img src={logo} alt='just a picture' width="500" height="300" />
+                       <img src={logo} alt='just a p' width="500" height="300" />
                 </div>
 
             </div>
