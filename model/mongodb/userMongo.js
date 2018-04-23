@@ -30,13 +30,20 @@ module.exports = {
 
 
 async function test() {
-    // var collection = await getCollectionTool.getCollection("user");
-    // console.log(await collection.find().toArray());
-    // var data = "ssss";
-    // var bb = ctypto.createHash("md5").update(data).digest("hex");
-    // console.log(bb);
+    var collection = await getCollectionTool.getCollection("user");
+    // console.log(await collection.insertOne({ username: '1qqq11',
+    //     gmail: '',
+    //     email: '658912539@qq.com',
+    //     password: '2b97cb3305e4b85ba2ba904cecff5601',
+    //     address: '',
+    //     phoneNumber: '',
+    //     wechat: '',
+    //     restrict: 'false',
+    //     credit: '100',
+    //     administrator: 'false'}));
+    // console.log(await collection.deleteOne({username: "1qqq11", password: "111111111111111111"}));
+    console.log(await collection.find().toArray());
 }
 
 test();
-
 

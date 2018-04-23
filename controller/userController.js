@@ -80,7 +80,7 @@ async function existEmail(email) {
  * @param user
  * @returns {Promise.<{}>}
  */
-async function login(user){
+async function login(user) {
     var result = {};
     try {
         var password = crypto.createHash("md5").update(user.password).digest("hex");
@@ -96,3 +96,17 @@ async function login(user){
     return result;
 }
 
+async function test() {
+    console.log(await login({ username: '1qq11',
+        gmail: '',
+        email: '658939539@qq.com',
+        password: '1111111111111111111',
+        address: '',
+        phoneNumber: '',
+        wechat: '',
+        restrict: 'false',
+        credit: '100',
+        administrator: 'false' }));
+}
+
+test();

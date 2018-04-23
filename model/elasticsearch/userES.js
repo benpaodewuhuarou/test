@@ -35,7 +35,7 @@ async function login(user) {
             index: "user",
             type: "user",
             body: {
-                query: {match: {username: user.username, password: user.password}}
+                query: {bool: {must: [{match: {username: user.username}}, {match: {password: user.password}}]}}
             }
         });
         if (response.hits.hits.length == 0) {
