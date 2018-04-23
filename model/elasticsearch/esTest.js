@@ -125,10 +125,10 @@ const esClient = new elasticsearch.Client({
 
 
 esClient.search({
-    index: 'product',
-    type: 'product',
+    index: 'user',
+    type: 'user',
     body: {
-        sort: [{date: {order: "asc"}}],
+        //sort: [{date: {order: "asc"}}],
         query: {match_all : {}}
     }
 }, function (error, response) {

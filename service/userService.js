@@ -50,8 +50,23 @@ async function existEmail(email) {
     }
 }
 
+/**
+ * login verify
+ * @param user
+ * @returns {Promise.<boolean>}
+ */
+async function login(user) {
+    try {
+        return await userES.login(user);
+    } catch (e) {
+        logger.error("login in userService error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     addUser: addUser,
     existUser: existUser,
-    existEmail: existEmail
+    existEmail: existEmail,
+    login: login
 };

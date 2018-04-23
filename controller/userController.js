@@ -75,3 +75,24 @@ async function existEmail(email) {
     return result;
 }
 
+/**
+ * login error
+ * @param user
+ * @returns {Promise.<{}>}
+ */
+async function login(user){
+    var result = {};
+    try {
+        var password = crypto.createHash("md5").update(user.password).digest("hex");
+        user.password = password;
+        var isUser = await userService.login(user);
+        result["status"] = 200;
+        result["message"] = isUser; //if user logins Successfully, it means: result["message"] = true or result["message"] = false
+    } catch (e) {
+        logger.error("login in user Controller error: " + e);
+        result["status"] = 400;
+        result["message"] = "error occurs";
+    }
+    return result;
+}
+

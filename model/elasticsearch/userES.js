@@ -24,6 +24,31 @@ async function addUser(user) {
     }
 }
 
+/**
+ * login verify
+ * @param user
+ * @returns {Promise.<boolean>}
+ */
+async function login(user) {
+    try {
+        var response = await esClient.search({
+            index: "user",
+            type: "user",
+            body: {
+                query: {match: {username: user.username, password: user.password}}
+            }
+        });
+        if (response.hits.hits.length == 0) {
+            return false;
+        }
+        return true;
+    } catch (e) {
+        logger.error("login in userEs error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
-    addUser: addUser
+    addUser: addUser,
+    login: login
 };
