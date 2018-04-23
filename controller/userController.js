@@ -26,9 +26,10 @@ async function addUser(user) {
             var newpassword = crypto.createHash("md5").update(user.password).digest("hex");
             user.password = newpassword;
         }
-        await userService.addUser(user);
+        var user = await userService.addUser(user);
         result["status"] = 200;
         result["message"] = "Add User Success";
+        result["data"] = user;
     } catch (e) {
         logger.error("addUser in user Controller error: " + e);
         result["status"] = 400;

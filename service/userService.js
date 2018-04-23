@@ -13,9 +13,9 @@ var logger = require("../tool/getLoggerTool");
  */
 async function addUser(user) {
     try {
-        await userMongo.addUser(user);
         await userES.addUser(user);
         await userRedis.addUser(user);
+        return await userMongo.addUser(user);
     } catch (e) {
         logger.error("addUser in userService in service error:" + e);
         throw e;
