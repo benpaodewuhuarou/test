@@ -13,7 +13,7 @@ async function addUser(user) {
     try {
         var collection = await getCollectionTool.getCollection("user");
         var insertInfo = await collection.insertOne(user);
-        return insertInfo.insertedCount;
+        return insertInfo.ops[0];
     } catch (e) {
         logger.error("addUser in userMongo file error: " + e);
         throw e;
@@ -29,10 +29,12 @@ module.exports = {
 
 
 
-
 async function test() {
-    var collection = await getCollectionTool.getCollection("user");
-    console.log(await collection.find().toArray());
+    // var collection = await getCollectionTool.getCollection("user");
+    // console.log(await collection.find().toArray());
+    // var data = "ssss";
+    // var bb = ctypto.createHash("md5").update(data).digest("hex");
+    // console.log(bb);
 }
 
 test();

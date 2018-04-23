@@ -3,6 +3,7 @@
  */
 var userService = require("../service/userService");
 var logger = require("../tool/getLoggerTool");
+var crypto = require("crypto");
 
 /**
  * add user, the input's type should be the json
@@ -21,6 +22,10 @@ var logger = require("../tool/getLoggerTool");
 async function addUser(user) {
     var result = {};
     try {
+        if (user.password != "") {
+            var newpassword = crypto.createHash("md5").update(user.password).digest("hex");
+            user.password = newpassword;
+        }
         await userService.addUser(user);
         result["status"] = 200;
         result["message"] = "Add User Success";

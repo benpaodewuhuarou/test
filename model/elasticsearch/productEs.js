@@ -63,6 +63,7 @@ async function getProductByType(type, from, size) {
         throw e;
     }
 }
+
 module.exports = {
     getIndexProduct: getIndexProduct,
     getProductByType: getProductByType

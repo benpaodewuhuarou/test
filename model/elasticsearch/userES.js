@@ -12,7 +12,7 @@ var logger = require('../../tool/getLoggerTool');
 async function addUser(user) {
     try {
         var response = await esClient.index({
-            index: 'shmall-user',
+            index: 'user',
             id: user.username,
             type: 'user',
             body: user
