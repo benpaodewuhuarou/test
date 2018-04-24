@@ -38,10 +38,11 @@ async function login(user) {
                 query: {bool: {must: [{match: {username: user.username}}, {match: {password: user.password}}]}}
             }
         });
-        if (response.hits.hits.length == 0) {
-            return false;
+        var user;
+        if (response.hits.hits.length > 0) {
+            user = response.hits.hits[0]._source;
         }
-        return true;
+        return user;
     } catch (e) {
         logger.error("login in userEs error: " + e);
         throw e;

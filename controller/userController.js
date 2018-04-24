@@ -85,9 +85,10 @@ async function login(user) {
     try {
         var password = crypto.createHash("md5").update(user.password).digest("hex");
         user.password = password;
-        var isUser = await userService.login(user);
+        var returnUser = await userService.login(user);
         result["status"] = 200;
-        result["message"] = isUser; //if user logins Successfully, it means: result["message"] = true or result["message"] = false
+        result["message"] = "login";
+        result["data"] = returnUser; //return undefined when user logins faily or return user info when user logins successfully
     } catch (e) {
         logger.error("login in user Controller error: " + e);
         result["status"] = 400;
@@ -100,7 +101,7 @@ async function test() {
     console.log(await login({ username: '1qq11',
         gmail: '',
         email: '658939539@qq.com',
-        password: '1111111111111111111',
+        password: '111111111111111111',
         address: '',
         phoneNumber: '',
         wechat: '',
