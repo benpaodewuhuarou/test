@@ -13,6 +13,4 @@ async function getCollection(collectionName) {
         return collection;
 }
 
-module.exports = {getCollection: getCollection};
-
-
+module.exports = { getCollection: getCollection };
