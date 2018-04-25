@@ -89,25 +89,20 @@ const esClient = new elasticsearch.Client({
 //
 //
 // esClient.index({
-//     index: "purchase",
-//     type: "purchase",
-//     id: '777777',
+//     index: "user",
+//     type: "user",
+//     id: '1qqq11',
 //     body: {
-//         purchaseId: '777777',
-//         username: '1qq11',
-//         title: 'I need to buy a TV. It\'s a test',
-//         allowed: 'true',
-//         type: '3C',
-//         highestPrice: 60,
-//         degree: 70,
-//         location: 'Jersey City',
-//         phoneNumber: '2012226738',
-//         wechat: 'xx12546ewwe2',
-//         email: 'fcccdewe@shmall.com',
-//         transmode: 'offline',
-//         date: 111111,
-//         detail: 'It\'s test purchase Requirement!!.',
-//         deleted: 'false' }
+//         username: '1qqq11',
+//         gmail: '',
+//         email: '658912539@qq.com',
+//         password: '2b97cb3305e4b85ba2ba904cecff5601',
+//         address: '',
+//         phoneNumber: '',
+//         wechat: '',
+//         restrict: 'false',
+//         credit: '100',
+//         administrator: 'false' }
 // }, function (error, response) {
 //     console.log(response);
 // });
@@ -128,7 +123,7 @@ esClient.search({
     index: 'user',
     type: 'user',
     body: {
-        //sort: [{date: {"order": "asc"}}],
+        //sort: [{date: {order: "asc"}}],
         query: {match_all : {}}
     }
 }, function (error, response) {

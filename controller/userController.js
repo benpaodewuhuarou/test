@@ -3,6 +3,7 @@
  */
 var userService = require("../service/userService");
 var logger = require("../tool/getLoggerTool");
+var crypto = require("crypto");
 
 /**
  * add user, the input's type should be the json
@@ -21,9 +22,14 @@ var logger = require("../tool/getLoggerTool");
 async function addUser(user) {
     var result = {};
     try {
-        await userService.addUser(user);
+        if (user.password != "") {
+            var newpassword = crypto.createHash("md5").update(user.password).digest("hex");
+            user.password = newpassword;
+        }
+        var user = await userService.addUser(user);
         result["status"] = 200;
         result["message"] = "Add User Success";
+        result["data"] = user;
     } catch (e) {
         logger.error("addUser in user Controller error: " + e);
         result["status"] = 400;
@@ -69,3 +75,40 @@ async function existEmail(email) {
     return result;
 }
 
+/**
+ * login error
+ * @param user
+ * @returns {Promise.<{}>}
+ */
+async function login(user) {
+    var result = {};
+    try {
+        var password = crypto.createHash("md5").update(user.password).digest("hex");
+        user.password = password;
+        var returnUser = await userService.login(user);
+        result["status"] = 200;
+        result["message"] = "login";
+        result["data"] = returnUser; //return undefined when user logins faily or return user info when user logins successfully
+    } catch (e) {
+        logger.error("login in user Controller error: " + e);
+        result["status"] = 400;
+        result["message"] = "error occurs";
+    }
+    return result;
+}
+
+
+async function test() {
+    console.log(await login({ username: '1qq11',
+        gmail: '',
+        email: '658939539@qq.com',
+        password: '111111111111111111',
+        address: '',
+        phoneNumber: '',
+        wechat: '',
+        restrict: 'false',
+        credit: '100',
+        administrator: 'false' }));
+}
+
+test();

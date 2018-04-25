@@ -17,7 +17,9 @@ var logger = require('../../tool/getLoggerTool');
 async function addUser(user) {
     try {
         await client.saddAsync(["username", user.username]);
-        await client.saddAsync(["email", user.email]);
+        if (user.email) {
+            await client.saddAsync(["email", user.email]);
+        }
     } catch (e) {
         logger.error("addUser in userRedis error: " + e);
         throw e;
@@ -69,4 +71,23 @@ module.exports = {
     existUser: existUser,
     existEmail: existEmail
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function test() {
+    await addUser({username: "1qq11"});
+}
+
+test();
+
 

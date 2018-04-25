@@ -12,7 +12,7 @@ var logger = require('../../tool/getLoggerTool');
 async function addUser(user) {
     try {
         var response = await esClient.index({
-            index: 'shmall-user',
+            index: 'user',
             id: user.username,
             type: 'user',
             body: user
@@ -24,6 +24,32 @@ async function addUser(user) {
     }
 }
 
+/**
+ * login verify
+ * @param user
+ * @returns {Promise.<boolean>}
+ */
+async function login(user) {
+    try {
+        var response = await esClient.search({
+            index: "user",
+            type: "user",
+            body: {
+                query: {bool: {must: [{match: {username: user.username}}, {match: {password: user.password}}]}}
+            }
+        });
+        var user;
+        if (response.hits.hits.length > 0) {
+            user = response.hits.hits[0]._source;
+        }
+        return user;
+    } catch (e) {
+        logger.error("login in userEs error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
-    addUser: addUser
+    addUser: addUser,
+    login: login
 };

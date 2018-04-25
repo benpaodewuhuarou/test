@@ -3,6 +3,10 @@
  */
 var productService = require("../service/productService");
 var logger = require("../tool/getLoggerTool");
+var express = require("express");
+var app = express();
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
 
 /**
  * get 20 products for home page order by date, the data is a list for products
@@ -24,10 +28,10 @@ var logger = require("../tool/getLoggerTool");
      deleted: 'false' }]
  * @returns {Promise.<void>}
  */
-async function getIndexProduct() {
-    var result = [];
+app.get("/getIndexProduct", async function (req, res) {
+    var result = {};
     try {
-        var data = productService.getIndexProduct();
+        var data = await productService.getIndexProduct();
         result["status"] = 200;
         result["message"] = "get products successfully";
         result["data"] = data;
@@ -36,8 +40,8 @@ async function getIndexProduct() {
         result["status"] = 400;
         result["message"] = "get products failed"
     }
-    return result;
-}
+    res.send(result);
+})
 
 /**
  * get product by the type, page number and size. The data is a list for products:
@@ -62,10 +66,10 @@ async function getIndexProduct() {
  * @param size
  * @returns {Promise.<Array>}
  */
-async function getProductByType(type, from, size) {
-    var result = [];
+app.get("/getProductByType", async function (req, res) {
+    var result = {};
     try {
-        var data = productService.getProductByType(type, from, size);
+        var data = await productService.getProductByType(req.query.type, req.query.from, req.query.size);
         result["status"] = 200;
         result["message"] = "get product By Type successfully";
         result["data"] = data;
@@ -74,5 +78,11 @@ async function getProductByType(type, from, size) {
         result["status"] = 400;
         result["message"] = "get product By Type failed"
     }
-    return result;
-}
+    res.send(result);
+});
+
+app.listen(3000, async function () {
+    console.log("The http interface server starts!!! Port:3000");
+})
+
+

@@ -13,9 +13,9 @@ var logger = require("../tool/getLoggerTool");
  */
 async function addUser(user) {
     try {
-        await userMongo.addUser(user);
         await userES.addUser(user);
         await userRedis.addUser(user);
+        return await userMongo.addUser(user);
     } catch (e) {
         logger.error("addUser in userService in service error:" + e);
         throw e;
@@ -50,8 +50,23 @@ async function existEmail(email) {
     }
 }
 
+/**
+ * login verify
+ * @param user
+ * @returns {Promise.<boolean>}
+ */
+async function login(user) {
+    try {
+        return await userES.login(user);
+    } catch (e) {
+        logger.error("login in userService error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     addUser: addUser,
     existUser: existUser,
-    existEmail: existEmail
+    existEmail: existEmail,
+    login: login
 };
