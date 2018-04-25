@@ -80,3 +80,12 @@ module.exports = {
     login: login,
     getUserByUsername: getUserByUsername
 };
+
+
+
+
+async function test() {
+    console.log(await getUserByUsername("1qq11"));
+}
+
+test();
