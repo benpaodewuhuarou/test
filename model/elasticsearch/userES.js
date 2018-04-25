@@ -49,7 +49,36 @@ async function login(user) {
     }
 }
 
+async function getUserByUsername(username) {
+    try {
+        var response = await esClient.search({
+            index: "user",
+            type: "user",
+            body: {
+                query: {
+                    bool : {
+                        must: [{
+                            match: {
+                                username: username
+                            }
+                        }]
+                    }
+                }
+            }
+        });
+        var user;
+        if (response.hits.hits.length > 0) {
+            user = response.hits.hits[0]._source;
+        }
+        return user;
+    } catch (e) {
+        logger.error("getUserByUsername in userEs error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     addUser: addUser,
-    login: login
+    login: login,
+    getUserByUsername: getUserByUsername
 };

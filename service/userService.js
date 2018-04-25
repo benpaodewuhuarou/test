@@ -64,6 +64,15 @@ async function login(user) {
     }
 }
 
+async function getUserByUsername(username) {
+    try {
+        return await userES.getUserByUsername(username);
+    } catch (e) {
+        logger.error("getUserByUsername in userService error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     addUser: addUser,
     existUser: existUser,
