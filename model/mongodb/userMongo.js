@@ -27,6 +27,15 @@ module.exports = {
 
 
 
+<<<<<<< HEAD
+// async function test() {
+//     var collection = await getCollectionTool.getCollection("user");
+//     console.log(await collection.find().toArray());
+//     console.log("dd");
+// }
+
+// test();
+=======
 
 
 async function test() {
@@ -48,3 +57,4 @@ async function test() {
 test();
 
 
+>>>>>>> 0c576f4cbfd8c94dd8934af5cd3ae09cc5ab7590
