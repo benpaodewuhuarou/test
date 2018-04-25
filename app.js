@@ -1,14 +1,19 @@
 const app = require('express')();
 const path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
-var bodyParser = require('body-parser');
+const passport = require('passport');
+const bodyParser = require('body-parser');
 const mongo = require('./model/mongodb/getCollectionTool');
 const PORT = process.env.PORT || 5000;
+const configRoutes = require('./routes');
+const keys = require('./configure/keys');
 
-
+// const flash = require('connect-flash');
+// app.use(flash());
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(
     cookieSession({
@@ -18,12 +23,12 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+require('./service/passport');
 
-
-app
+configRoutes(app, passport);
 
 app.listen(PORT, () => {
-    console.log('the web listen on port 3000')
+    console.log('the web listen on port 5000')
 })
 
 
