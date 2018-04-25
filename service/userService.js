@@ -77,5 +77,6 @@ module.exports = {
     addUser: addUser,
     existUser: existUser,
     existEmail: existEmail,
-    login: login
+    login: login,
+    getUserByUsername: getUserByUsername
 };
