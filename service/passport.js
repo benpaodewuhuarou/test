@@ -1,44 +1,34 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('../configure/keys');
-const mongodb = require('../model/mongodb/getCollectionTool')
-const mongoMethod = require('../model/mongodb/userMongo');
-var User = null;
-async function a() {
-    User = await mongodb.getCollection('user');
-}
-a();
-console.log(User);
+const userService = require('./userService');
+
+
 
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user.username);
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id).then(user => {
-        done(null, user);
-    });
+passport.deserializeUser(async(username, done) => {
+    let user = await userService.getUserByUsername(username);
+    done(err, user);
 });
 
 
 
 passport.use(new localStrategy(
-    function(username, password, done) {
-        User.findOne({ username: username }, function(err, user) {
-            if (err) { return done(err) }
-            if (!user) {
-                return done(null, false, { message: 'incorrect username' });
-            }
-            console.log(user);
-
-            if (user.password !== password) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        })
-
+    async(username, password, done) => {
+        let user = {
+            username: username,
+            password: password
+        }
+        let logResult = await userService.login(user);
+        if (logResult) {
+            return done(null, logResult);
+        } else {
+            return done(null, false, { message: 'Incorrect username or password' })
+        }
     }
 ))
 

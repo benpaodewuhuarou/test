@@ -8,7 +8,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const mongo = require('./model/mongodb/getCollectionTool');
 const PORT = process.env.PORT || 5000;
-const configRoutes = require('./routes');
+const configRoutes = require('./controller');
 const keys = require('./configure/keys');
 
 // const flash = require('connect-flash');
