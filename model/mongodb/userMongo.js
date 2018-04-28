@@ -2,7 +2,7 @@
  * Created by shizekang on 3/26/2018.
  */
 var getCollectionTool = require("./getCollectionTool");
-var logger= require('../../tool/getLoggerTool');
+var logger = require('../../tool/getLoggerTool');
 
 /**
  * add user to mongodb atlas
@@ -44,5 +44,4 @@ async function test() {
     console.log(await collection.find().toArray());
 }
 
-test();
-
+// test();

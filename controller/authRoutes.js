@@ -12,6 +12,10 @@ module.exports = passport => {
             successRedirect: '/sucess'
 
         }))
+    router.get('/logout', (req, res) => {
+        req.logout();
+        res.redirect('/auth/');
+    })
     router.get('/sucess', (req, res) => {
         res.send('sucess');
     })

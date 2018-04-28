@@ -17,7 +17,7 @@ var crypto = require("crypto");
  * "credit" : "100", (initial value: 100)
  * "administrator" : "false", (initial value: false)
  * @param user
- * @returns {Promise.<void>}
+ * @returns {Promise.<boolean>}
  */
 async function addUser(user) {
     var result = {};
@@ -40,7 +40,7 @@ async function addUser(user) {
 
 /**
  * check if the username exists, if username has exsited, return true, if not return false;
- * @returns {Promise.<void>}
+ * @returns {Promise.<boolean>}
  */
 async function existUser(username) {
     var result = {};
@@ -59,7 +59,7 @@ async function existUser(username) {
 /**
  * check if the email-exist
  * @param email
- * @returns {Promise.<{}>}
+ * @returns {Promise.<{object}>}
  */
 async function existEmail(email) {
     var result = {};
@@ -78,7 +78,7 @@ async function existEmail(email) {
 /**
  * login error
  * @param user
- * @returns {Promise.<{}>}
+ * @returns {Promise.<{object}>}
  */
 async function login(user) {
     var result = {};
@@ -99,7 +99,8 @@ async function login(user) {
 
 
 async function test() {
-    console.log(await login({ username: '1qq11',
+    console.log(await login({
+        username: '1qq11',
         gmail: '',
         email: '658939539@qq.com',
         password: '111111111111111111',
@@ -108,7 +109,8 @@ async function test() {
         wechat: '',
         restrict: 'false',
         credit: '100',
-        administrator: 'false' }));
+        administrator: 'false'
+    }));
 }
 
-test();
+// test();

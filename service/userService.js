@@ -84,8 +84,8 @@ module.exports = {
 
 
 
-async function test() {
-    console.log(await getUserByUsername("1qq11"));
-}
+// async function test() {
+//     console.log(await getUserByUsername("1qq11"));
+// }
 
-test();
+// test();

@@ -3,7 +3,7 @@
  */
 const productService = require("../service/productService");
 const logger = require("../tool/getLoggerTool");
-const express = require(express);
+const express = require('express');
 const router = express.Router();
 
 module.exports = () => {
@@ -27,6 +27,9 @@ module.exports = () => {
      deleted: 'false' }]
  * @returns {Promise.<void>}
  */
+    router.get('/', (res, req) => {
+        req.send('ddddd');
+    })
     router.get("/getIndexProduct", async function(req, res) {
         var result = {};
         try {

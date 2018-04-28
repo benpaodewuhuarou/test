@@ -27,7 +27,7 @@ async function addUser(user) {
 /**
  * login verify
  * @param user
- * @returns {Promise.<boolean>}
+ * @returns {Promise.user}
  */
 async function login(user) {
     try {
@@ -35,7 +35,7 @@ async function login(user) {
             index: "user",
             type: "user",
             body: {
-                query: {bool: {must: [{match: {username: user.username}}, {match: {password: user.password}}]}}
+                query: { bool: { must: [{ match: { username: user.username } }, { match: { password: user.password } }] } }
             }
         });
         var user;
@@ -56,7 +56,7 @@ async function getUserByUsername(username) {
             type: "user",
             body: {
                 query: {
-                    bool : {
+                    bool: {
                         must: [{
                             match: {
                                 username: username

@@ -5,7 +5,7 @@ const path = require("path");
 
 const constructorMethod = (app, passport) => {
     app.use("/auth", authRoutes(passport));
-    app.use('/product', productController);
+    app.use('/product', productController());
     //   app.use("/users", userRoutes);
     //   app.get("/about", (req, res) => {
     //     res.sendFile(path.resolve("static/about.html"));

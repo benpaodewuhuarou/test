@@ -5,14 +5,18 @@ const userService = require('./userService');
 
 
 
-
 passport.serializeUser((user, done) => {
     done(null, user.username);
+
 });
 
 passport.deserializeUser(async(username, done) => {
-    let user = await userService.getUserByUsername(username);
-    done(err, user);
+    try {
+        let user = await userService.getUserByUsername(username);
+        done(null, user);
+    } catch (e) {
+        console.log('some error occurs in deserializeUser pocess');
+    }
 });
 
 
@@ -30,6 +34,7 @@ passport.use(new localStrategy(
             return done(null, false, { message: 'Incorrect username or password' })
         }
     }
+
 ))
 
 // passport.use(
