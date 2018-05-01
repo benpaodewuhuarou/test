@@ -1,9 +1,11 @@
 /**
  * Created by shizekang on 3/28/2018.
  */
-var userService = require("../service/userService");
-var logger = require("../tool/getLoggerTool");
-var crypto = require("crypto");
+const userService = require("../service/userService");
+const logger = require("../tool/getLoggerTool");
+const crypto = require("crypto");
+const express = require("express");
+const router = express.Router();
 
 /**
  * add user, the input's type should be the json
@@ -19,9 +21,10 @@ var crypto = require("crypto");
  * @param user
  * @returns {Promise.<boolean>}
  */
-async function addUser(user) {
+router.put("/addUser", async function (req, res) {
     var result = {};
     try {
+        var user = req.body;
         if (user.password != "") {
             var newpassword = crypto.createHash("md5").update(user.password).digest("hex");
             user.password = newpassword;
@@ -35,16 +38,17 @@ async function addUser(user) {
         result["status"] = 400;
         result["message"] = "Add User Fail";
     }
-    return result;
-}
+    res.send(result);
+})
 
 /**
  * check if the username exists, if username has exsited, return true, if not return false;
  * @returns {Promise.<boolean>}
  */
-async function existUser(username) {
+router.get("/existUser", async function (req, res) {
     var result = {};
     try {
+        var username = req.query.username;
         var exist = await userService.existUser(username);
         result["status"] = 200;
         result["message"] = exist; //if the username exists, it means: result["message"] = true
@@ -53,17 +57,18 @@ async function existUser(username) {
         result["status"] = 400;
         result["message"] = "check username fail";
     }
-    return result;
-}
+    res.send(result);
+});
 
 /**
  * check if the email-exist
  * @param email
  * @returns {Promise.<{object}>}
  */
-async function existEmail(email) {
+router.get("/existEmail", async function (req, res) {
     var result = {};
     try {
+        var email = req.query.email;
         var exist = await userService.existEmail(email);
         result["status"] = 200;
         result["message"] = exist; //if the email exists, it means: result["message"] = true
@@ -72,31 +77,10 @@ async function existEmail(email) {
         result["status"] = 400;
         result["message"] = "check email fail";
     }
-    return result;
-}
+    res.send(result);
+})
 
-/**
- * login error
- * @param user
- * @returns {Promise.<{object}>}
- */
-async function login(user) {
-    var result = {};
-    try {
-        var password = crypto.createHash("md5").update(user.password).digest("hex");
-        user.password = password;
-        var returnUser = await userService.login(user);
-        result["status"] = 200;
-        result["message"] = "login";
-        result["data"] = returnUser; //return undefined when user logins faily or return user info when user logins successfully
-    } catch (e) {
-        logger.error("login in user Controller error: " + e);
-        result["status"] = 400;
-        result["message"] = "error occurs";
-    }
-    return result;
-}
-
+module.exports = router;
 
 async function test() {
     console.log(await login({

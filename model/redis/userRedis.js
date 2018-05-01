@@ -83,11 +83,11 @@ module.exports = {
 
 
 
-
-async function test() {
-    await addUser({username: "1qq11"});
-}
-
-test();
+//
+// async function test() {
+//     console.log(await existUser("1q111q11"));
+// }
+//
+// test();
 
 
