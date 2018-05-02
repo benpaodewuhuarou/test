@@ -1,0 +1,52 @@
+* {
+    margin: o;
+    padding: 0;
+}
+
+.loginContainer {
+    display: none;
+}
+
+.logHead {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.loginBack {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    z-index: 4;
+    text-align: center;
+}
+
+.fo {
+    width: 500px;
+    padding-top: 30px;
+    margin: auto;
+}
+
+.login-close {
+    right: 45px;
+    top: 45px;
+    z-index: 5;
+    position: absolute;
+}
+
+.md-32 {
+    font-size: 50px;
+}
+
+.login-close:hover {
+    color: white;
+}

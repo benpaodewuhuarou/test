@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    margin-top: 40px;
+    position: relative;
+}
+
+.sublist ul {
+    border: 1px black solid;
+}
+
+.sublist li {
+    border: 1px black solid;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.sublist {
+    position: absolute;
+}
+
+.sublist-ele {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    opacity: 60%;
+    z-index: 1;
+    display: none;
+}
+
+.e:hover>#u {
+    display: block;
+}

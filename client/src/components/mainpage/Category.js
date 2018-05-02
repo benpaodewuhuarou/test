@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class Recommend extends Component {
+class Category extends Component {
     render() {
         return (
-            <div style={{ height: '400px', width: "100%", border: '1px solid black' }}>
+            <div style={{ minHeight: '400px', width: "100%", border: '1px solid black' }}>
                 <div className='row 'style={{marginLeft:'50px'}}>
                     <div className='col-sm-1'>
 
                     </div>
                     <div className='col-sm-3'style={{ height: '400px', width: "100%", border: '1px solid black' }}>
-
+                        
                     </div>
                     <div className='col-sm-3'style={{ height: '400px', width: "100%", border: '1px solid black' }}>
 
@@ -60,4 +60,4 @@ class Recommend extends Component {
     }
 }
 
-export default Recommend;
+export default Category;

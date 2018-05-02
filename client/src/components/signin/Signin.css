@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.signin-container {
+    display: none;
+}
+
+.signin-back {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.signin-form {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-signin {
+    margin: 0 15%;
+}
+
+.signin-container h1 {
+    margin-top: 100px
+}
+
+.signin-input {
+    margin-top: 35px;
+}
+
+.signin-input button {
+    min-width: 150px;
+}
+
+.signin-container p {
+    margin-top: 100px;
+}
+
+.signin-close {
+    right: 45px;
+    top: 45px;
+    z-index: 5;
+    position: absolute;
+}
+
+.signin-close:hover {
+    color: white;
+}
