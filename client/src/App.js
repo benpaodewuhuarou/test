@@ -11,6 +11,9 @@ import Footer from './components/mainpage/Footer';
 import Sell from './components/sell/Sell';
 import Login from './components/login/Login';
 import Sigin from './components/signin/Signin';
+import Product from './components/product/Product';
+import Ad from './components/adManagement/AdManagement';
+import Us from './components/userManagement/UserManagement';
 
 class App extends Component {
   // componentDidMount() {
@@ -27,8 +30,11 @@ class App extends Component {
         <Slide />
         <Rem />
         <Cat />
-        <Footer /> */}
+        <Footer />
         <Sigin />
+        <Product />
+        <Us /> */}
+        <Ad />
         
       </div>
     );

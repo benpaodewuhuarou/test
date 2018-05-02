@@ -2,3 +2,37 @@
     margin: 0;
     padding: 0;
 }
+
+.product-container {
+    margin: 0 15%;
+}
+
+.product-image {
+    height: 500px;
+    line-height: 500px;
+}
+
+.product-user {
+    height: 500px;
+    border: 1px solid black;
+}
+
+.product-chat {
+    border: 1px solid black;
+    height: 200px;
+    width: 100%;
+}
+
+.product-info {
+    border: 1px solid black;
+}
+
+#pictureCarouse {
+    padding-top: 20px;
+}
+
+.pi {
+    border: 1px solid black;
+    height: 70px;
+    margin: 40px 20px;
+}

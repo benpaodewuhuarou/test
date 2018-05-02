@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.user-items img {
+    width: 60px;
+    height: 60px;
+}
+
+.user-info {
+    margin-top: 50px;
+    border-right: 1px solid black;
+    height: 90vh;
+}
+
+.user-panel li {
+    margin: 50px 0;
+    list-style-type: none;
+}
+
+.user-items {
+    margin-top: 50px;
+}
+
+.user-item {
+    margin: 20px auto;
+}
