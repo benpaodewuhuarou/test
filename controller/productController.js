@@ -99,6 +99,7 @@ module.exports = () => {
             var product = req.body;
             product.itemId = id;
             product.date = Date.now();
+            product.username = "1qqq11";
             var product = await productService.addProduct(product);
             result["status"] = 200;
             result["message"] = "add product successfully";
