@@ -2,6 +2,7 @@
  * Created by shizekang on 4/9/2018.
  */
 var productEs = require("../model/elasticsearch/productEs");
+var productMongo = require("../model/mongodb/productMongo");
 var logger = require("../tool/getLoggerTool");
 
 /**
@@ -33,7 +34,28 @@ async function getProductByType(type, from, size) {
     }
 }
 
+async function addProduct(product) {
+    try {
+        await productEs.addProduct(product);
+        return await productMongo.addProduct(product);
+    } catch (e) {
+        logger.error("addProduct in productService error:" + e);
+        throw e;
+    }
+}
+
+async function getProductById(itemId) {
+    try {
+        return await productEs.getProductById(itemId);
+    } catch (e) {
+        logger.error("getProductById in productService error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     getIndexProduct: getIndexProduct,
-    getProductByType: getProductByType
+    getProductByType: getProductByType,
+    addProduct: addProduct,
+    getProductById: getProductById
 };

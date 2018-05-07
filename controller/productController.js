@@ -5,6 +5,12 @@ const productService = require("../service/productService");
 const logger = require("../tool/getLoggerTool");
 const express = require('express');
 const router = express.Router();
+const fs = require("fs");
+const multiparty = require("connect-multiparty");
+const multi = multiparty();
+const uuid = require("node-uuid");
+
+//var upload = multi({dest: "./public/"});
 
 module.exports = () => {
     /**
@@ -27,6 +33,9 @@ module.exports = () => {
      deleted: 'false' }]
  * @returns {Promise.<void>}
  */
+
+    router.use(multiparty({uploadDir: "./resource/images"}));
+
     router.get('/', (res, req) => {
         req.send('ddddd');
     })
@@ -82,6 +91,56 @@ module.exports = () => {
         }
         res.send(result);
     });
+
+    router.put("/addProduct", async function (req, res) {
+        var result = {};
+        try {
+            var id = uuid.v4();
+            var product = req.body;
+            product.itemId = id;
+            product.date = Date.now();
+            var product = await productService.addProduct(product);
+            result["status"] = 200;
+            result["message"] = "add product successfully";
+            result["data"] = product;
+        } catch (e) {
+            logger.error("addProduct in productController error: " + e);
+            result["status"] = 400;
+            result["message"] = "add product fail";
+        }
+        res.send(result);
+    });
+
+    router.post("/upload", multi, function (req, res, next) {
+        var result = {};
+        try {
+            var files = req.files.logo;
+            console.log(files.path);
+            result["status"] = 200;
+            result["message"] = "upload successfully";
+            result["data"] = files.path;
+        } catch (e) {
+            logger.error("upload in productController error: " + e);
+            result["status"] = 400;
+            result["message"] = "upload fail";
+        }
+        res.send(result);
+    });
+
+    router.get("/getProductById", async function (req, res) {
+        var result = {};
+        try {
+            var product = await productService.getProductById(req.query.itemId);
+            result["status"] = 200;
+            result["message"] = "getProductById successfully"
+            result["data"] = product;
+        } catch (e) {
+            logger.error("getProductById in productController error: " + e);
+            result["status"] = 400;
+            result["message"] = "getProductById fail";
+        }
+        res.send(result);
+    })
 
     return router;
 }

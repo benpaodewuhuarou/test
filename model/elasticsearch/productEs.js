@@ -63,7 +63,49 @@ async function getProductByType(type, from, size) {
         throw e;
     }
 }
+
+async function addProduct(product) {
+    try {
+        await esClient.index({
+            index: "product",
+            type: "product",
+            id: product.itemId,
+            body: product
+        });
+        return product;
+    } catch (e) {
+        logger.error("addProduct in productEs error: " + e);
+        throw e;
+    }
+}
+
+async function getProductById(itemId) {
+    try {
+        var response = await esClient.search({
+            index: "product",
+            type: "product",
+            body: {
+                query: {
+                    match: {
+                        itemId: itemId
+                    }
+                }
+            }
+        });
+        var result = {};
+        if (response && response.hits && response.hits.hits) {
+            result = response.hits.hits[0]._source;
+        }
+        return result;
+    } catch (e) {
+        logge.error("getProductById in productES error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     getIndexProduct: getIndexProduct,
-    getProductByType: getProductByType
+    getProductByType: getProductByType,
+    addProduct: addProduct,
+    getProductById: getProductById
 };

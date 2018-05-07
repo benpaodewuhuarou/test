@@ -1,0 +1,12 @@
+[2018-05-01T15:34:40.626] [ERROR] secondhandmall - existUser in user Controller error: ReferenceError: username is not defined
+[2018-05-01T16:34:44.193] [ERROR] secondhandmall - addUser in user Controller error: TypeError: Data must be a string or a buffer
+[2018-05-01T16:35:12.384] [ERROR] secondhandmall - addUser in user Controller error: TypeError: Data must be a string or a buffer
+[2018-05-01T16:37:16.858] [ERROR] secondhandmall - addUser in user Controller error: TypeError: Data must be a string or a buffer
+[2018-05-01T16:38:01.443] [ERROR] secondhandmall - addUser in user Controller error: TypeError: Data must be a string or a buffer
+[2018-05-06T12:51:54.621] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'path' of undefined
+[2018-05-06T12:52:04.330] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'path' of undefined
+[2018-05-07T11:56:47.224] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'path' of undefined
+[2018-05-07T11:59:31.584] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'path' of undefined
+[2018-05-07T15:20:41.809] [ERROR] secondhandmall - addProduct in productMongo error: ReferenceError: product is not defined
+[2018-05-07T15:20:41.812] [ERROR] secondhandmall - addProduct in productService error:ReferenceError: product is not defined
+[2018-05-07T15:20:41.812] [ERROR] secondhandmall - addProduct in productController error: ReferenceError: product is not defined
