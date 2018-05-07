@@ -22,19 +22,19 @@ class App extends Component {
   render() {
     return (
       <div className="App container-fluid">
-        {/* <Top />
+        <Top />
         <Header />
         <Nav />
-        <Sell />
-        <Login /> 
         <Slide />
         <Rem />
-        <Cat />
-        <Footer />
-        <Sigin />
-        <Product />
-        <Us /> */}
-        <Ad />
+        {/* <Cat /> */}
+        {/* <Footer />
+        <Sigin /> */}
+        {/* <Product /> */}
+        {/* <Us />
+        <Ad /> */}
+        {/* <Sell />
+        <Login />  */}
         
       </div>
     );

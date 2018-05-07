@@ -12,8 +12,8 @@ class Buy extends Component {
                         <small id="itemlHelp" class="form-text text-muted">a brief stunning title please....</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
@@ -82,8 +82,8 @@ class Buy extends Component {
                     </div>
                         <div class="form-group" >
                             <label for="exampleFormControlFile1">Example file input</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" aria-describedby="fileHelp"/>
-                            <small id="fileHelp" class="form-text text-muted">max for 5 pictures</small>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" aria-describedby="image"/>
+                            <small id="image" class="form-text text-muted">max for 5 pictures</small>
                         </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Example textarea</label>

@@ -3,17 +3,33 @@
     padding: 0;
 }
 
+a,
+a:hover,
+a:link,
+a.visited,
+a.focus {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav {
-    margin-top: 40px;
+    background-color: rgb(224, 224, 235);
     position: relative;
 }
 
-.sublist ul {
-    border: 1px black solid;
+.nav i {
+    font-size: 1em
+}
+
+.nav-list {
+    margin-top: 10px;
+}
+
+.nav-list li:hover {
+    color: white;
 }
 
 .sublist li {
-    border: 1px black solid;
     display: inline-block;
     margin: 0 20px;
 }
@@ -22,15 +38,79 @@
     position: absolute;
 }
 
-.sublist-ele {
+.sublist {
     width: 100%;
-    height: 300px;
-    background-color: black;
-    opacity: 60%;
-    z-index: 1;
+    min-height: 200px;
+    background-color: rgba(100, 101, 107, 0.911);
+    opacity: 0.8;
+    z-index: 999;
     display: none;
 }
 
-.e:hover>#u {
+.sublist li {
+    min-width: 100px;
+}
+
+.sublist ul {
+    margin-top: 40px;
+}
+
+.sublist i {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 4em;
+}
+
+.sublist p {
+    color: white;
+}
+
+.nav-list>li {
+    display: inline-block;
+    width: 120px;
+    margin: 0 20px;
+}
+
+.nav-list-title {
+    margin-top: 3px;
+}
+
+.col-sm-12 {
+    margin-bottom: 0;
+}
+
+.ele-show {
     display: block;
+}
+
+.clo-show {
+    display: block;
+}
+
+.spo-show {
+    display: block;
+}
+
+.hea-show {
+    display: block;
+}
+
+.car-show {
+    display: block;
+}
+
+.boo-show {
+    display: block;
+}
+
+.hom-show {
+    display: block;
+}
+
+.sublist-title:hover i {
+    color: black;
+}
+
+.sublist-title:hover p {
+    color: black;
 }

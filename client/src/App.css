@@ -1,7 +1,8 @@
 .App {
     text-align: center;
     position: relative;
-    min-height: 800px
+    min-height: 800px;
+    padding: 0 40px;
 }
 
 .App-logo {
