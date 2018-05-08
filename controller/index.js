@@ -2,12 +2,14 @@ const authRoutes = require("./authRoutes");
 const productController = require('./productController');
 // const userRoutes = require("./api");
 const path = require("path");
-const userController = require("./userController")
+const userController = require("./userController");
+const purchaseController = require("./purchaseController");
 
 const constructorMethod = (app, passport) => {
     app.use("/auth", authRoutes(passport));
     app.use('/product', productController());
     app.use("/user", userController);
+    app.use("/purchase", purchaseController);
     //   app.use("/users", userRoutes);
     //   app.get("/about", (req, res) => {
     //     res.sendFile(path.resolve("static/about.html"));
