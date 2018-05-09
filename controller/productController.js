@@ -9,6 +9,7 @@ const fs = require("fs");
 const multiparty = require("connect-multiparty");
 const multi = multiparty();
 const uuid = require("node-uuid");
+const fomidable = require("formidable");
 
 //var upload = multi({dest: "./public/"});
 
@@ -34,7 +35,7 @@ module.exports = () => {
  * @returns {Promise.<void>}
  */
 
-    router.use(multiparty({uploadDir: "./resource/images"}));
+    //router.use(multiparty({uploadDir: "./resource/images"}));
 
     router.get('/', (res, req) => {
         req.send('ddddd');
@@ -113,19 +114,34 @@ module.exports = () => {
     });
 
     router.post("/upload", multi, function (req, res, next) {
-        var result = {};
-        try {
-            var files = req.files.logo;
-            console.log(files.path);
-            result["status"] = 200;
-            result["message"] = "upload successfully";
-            result["data"] = files.path;
-        } catch (e) {
-            logger.error("upload in productController error: " + e);
-            result["status"] = 400;
-            result["message"] = "upload fail";
-        }
-        res.send(result);
+        console.log(req.files);
+        // for (var i = 0; i < req.files.length; i++) {
+        // //
+        // }
+        var path = req.files.file.path;
+        var image = path.substring(path.lastIndexOf("\\") + 1);
+        var newpath = __dirname + "/resource/images/" + image;
+        fs.rename(path, newpath, function () {
+            res.send("/resource/images/" + image);
+        })
+        // var oldpath = __dirname + "/../" + req.file.path;
+        // var newpath = __dirname + ;
+        // fs.rename(oldpath, newpath, function () {
+        //
+        // })
+        // var result = {};
+        // try {
+        //     var files = req.files;
+        //     console.log(files.path);
+        //     result["status"] = 200;
+        //     result["message"] = "upload successfully";
+        //     result["data"] = files.path;
+        // } catch (e) {
+        //     logger.error("upload in productController error: " + e);
+        //     result["status"] = 400;
+        //     result["message"] = "upload fail";
+        // }
+        // res.send(result);
     });
 
     router.get("/getProductById", async function (req, res) {
@@ -139,6 +155,22 @@ module.exports = () => {
             logger.error("getProductById in productController error: " + e);
             result["status"] = 400;
             result["message"] = "getProductById fail";
+        }
+        res.send(result);
+    });
+
+    router.get("/searchProduct", async function(req, res) {
+        result = {};
+        try {
+            var condition = req.query.condition;
+            var result = await productService.searchProduct(condition);
+            result["status"] = 200;
+            result["message"] = "searchProduct successfully";
+            result["data"] = result;
+        } catch (e) {
+            logger.error("searchProduct in productController error: " + e);
+            result["status"] = 400;
+            result["message"] = "search fail";
         }
         res.send(result);
     })

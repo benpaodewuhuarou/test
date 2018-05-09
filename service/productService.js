@@ -53,9 +53,19 @@ async function getProductById(itemId) {
     }
 }
 
+async function searchProduct(condition) {
+    try {
+        return await productEs.searchProduct(condition);
+    } catch (e) {
+        logger.error("searchProduct in productService error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     getIndexProduct: getIndexProduct,
     getProductByType: getProductByType,
     addProduct: addProduct,
-    getProductById: getProductById
+    getProductById: getProductById,
+    searchProduct: searchProduct
 };

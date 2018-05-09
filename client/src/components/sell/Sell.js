@@ -1,101 +1,125 @@
 import React, { Component } from 'react';
 import './sell.css';
+import axios from 'axios'
 
 class Buy extends Component {
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state ={
+    //         file:null
+    //     }
+    //     this.onFormSubmit = this.onFormSubmit.bind(this)
+    //     this.onChange = this.onChange.bind(this)
+    //     this.fileUpload = this.fileUpload.bind(this)
+    // }
+    // onFormSubmit(e){
+    //     e.preventDefault() // Stop form submit
+    //     this.fileUpload(this.state.file).then((response)=>{
+    //         console.log(response.data);
+    //     })
+    // }
+    // onChange(e) {
+    //     this.setState({file:e.target.files[0]})
+    // }
+    onFormSubmit(e){
+        e.preventDefault();
+        console.log("fileUpload");
+        const url = '/product/upload';
+        const formData = new FormData();
+        formData.append('file',document.getElementById("image").files[0]);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        axios.post(url, formData,config).then(function (bb) {
+            console.log(bb);
+        });
+    }
+
+
+    // submit() {
+    //     // let files = e.target.files || e.dataTransfer.files;
+    //     // console.log(files[0]);
+    //     var form_data = new FormData(document.getElementById("formfile")[0]);
+    //     axios({
+    //         method:'POST',
+    //         url:'/product/test',
+    //         processData: false,
+    //         contentType: false,
+    //         async: false,
+    //         cache: false,
+    //         data : form_data,
+    //         success: function(response){
+    //
+    //         }
+    //     });
+    //
+    //     // var data = new FormData();
+    //     // data.append("logo", document.getElementById("image")[0]);
+    //     // const config = {
+    //     //     headers: { 'content-type': 'multipart/form-data' }
+    //     // }
+    //     // return axios.post("/upload/test", data, config);
+    //
+    //
+    //     // var formData = new FormData(document.getElementById('#formFile')[0]);
+    //     // axios({
+    //     //         url: '/product/upload',
+    //     //         method: 'POST',
+    //     //         data: formData,
+    //     //         async: false,
+    //     //         cache: false,
+    //     //         contentType: false,
+    //     //         processData: false,
+    //     //         success: function (data) {
+    //     //             if (200 === 200) {
+    //     //             } else {
+    //     //             }
+    //     //         },
+    //     //         error: function (err) {
+    //     //             console.log("err", err);
+    //     //         }
+    //     //     }
+    //     // );
+    // }
+
     render() {
         return (
-            <div className='buy-container'>
-                <form className='innerForm'>
-                    <div class="form-group">
-                        <label for="title">item title</label>
-                        <input type="text" class="form-control" id="itemTitle" aria-describedby="itemlHelp" placeholder="item title" />
-                        <small id="itemlHelp" class="form-text text-muted">a brief stunning title please....</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">expected price</label>
-                        <input type="text" class="form-control" id="price" placeholder="input a price range" />
-                    </div>
-                    <div class="form-group">
-                        <label for="phone-number">Phone Number</label>
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="input phoneNumber" />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="state" data-dropup-auto="false" data-size="5">
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-                        <div class="form-group" >
-                            <label for="exampleFormControlFile1">Example file input</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" aria-describedby="image"/>
-                            <small id="image" class="form-text text-muted">max for 5 pictures</small>
-                        </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                        
-                    </div>
+            <body>
+            <form onSubmit={this.onFormSubmit}>
+                <h2>多图上传</h2>
+                <input type="file" name="logo" id="image"/>
+                <input type="file" name="111" multiple className="multiple-upload" />
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+                <input type="submit" id="btn" value="提交"/>
+            </form>
+            </body>
         )
     }
 }
 
 export default Buy;
+
+
+// var React = require('react'),
+//     FileInput = require('react-file-input');
+//
+// var Form = React.createClass({
+//     handleChange: function(event) {
+//         console.log('Selected file:', event.target.files[0]);
+//     },
+//
+//     render: function() {
+//         return (
+//             <form>
+//                 <FileInput name="myImage"
+//                            accept=".png,.gif"
+//                            placeholder="My Image"
+//                            className="inputClass"
+//                            onChange={this.handleChange} />
+//             </form>
+//         );
+//     },
+// });

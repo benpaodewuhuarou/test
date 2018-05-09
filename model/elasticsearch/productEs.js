@@ -103,9 +103,38 @@ async function getProductById(itemId) {
     }
 }
 
+async function searchProduct(condition) {
+    try {
+        var response = await esClient.search({
+            index: "product",
+            type: "product",
+            body: {
+                query: {
+                    multi_match: {
+                        fields: ["title", "type", "location", "detail", "transmode"],
+                        query: condition,
+                        fuzziness: "AUTO"
+                    }
+                }
+            }
+        });
+        var result = [];
+        if (response && response.hits && response.hits.hits) {
+            for (var i = 0; i < response.hits.hits.length; i++) {
+                result.push(response.hits.hits[i]._source);
+            }
+        }
+        return result;
+    } catch (e) {
+        logger.error("searchProduct in productEs error: " + e);
+        throw e;
+    }
+}
+
 module.exports = {
     getIndexProduct: getIndexProduct,
     getProductByType: getProductByType,
     addProduct: addProduct,
-    getProductById: getProductById
+    getProductById: getProductById,
+    searchProduct: searchProduct
 };
