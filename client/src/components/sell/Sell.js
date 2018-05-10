@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import './sell.css';
 import axios from 'axios'
 
-class Buy extends Component {
+class Sell extends Component {
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    // onFormSubmit(e){
+    //     e.preventDefault();
+    //     console.log("fileUpload");
+    //     const url = '/product/upload';
+    //     const formData = new FormData();
+    //     formData.append('file',document.getElementById("image").files[0]);
+    //     const config = {
+    //         headers: {
+    //             'content-type': 'multipart/form-data'
+    //         }
+    //     }
+    //     axios.post(url, formData,config).then(function (bb) {
+    //         console.log(bb);
+    //     });
+    // }
+
 
     handleSubmit(event) {
         event.preventDefault();
@@ -24,6 +40,8 @@ class Buy extends Component {
               else { } 
               console.log('imgUploader upload success, data:', data); }, 
               error: function (err) { console.log("err", err); alert("222") } });
+
+        
         // const data = new FormData(event.target);
         // let title=data.get('itemTitle');
         // let type='3C';
@@ -58,7 +76,7 @@ class Buy extends Component {
 
     render() {
         return (
-            <div className='buy-container'>
+            <div className='sell-container'>
                 <form className='innerForm' onSubmit={this.handleSubmit} >
                     <div class="form-group">
                         <label for="title">item title</label>
@@ -146,12 +164,9 @@ class Buy extends Component {
                         <textarea class="form-control" name="Textarea" rows="5"></textarea>
 
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-        )
+        )}
     }
-}
 
-export default Buy;
+    export default Sell;

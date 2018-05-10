@@ -7,13 +7,13 @@ import axios from 'axios';
 class Signin extends Component {
   handleSumbit(e){
     console.log('here');
-    e.preventDefault();
-    const url = '/login';
-    const formData = new FormData(e.target);
+    // e.preventDefault();
+    // const url = '/login';
+    // const formData = new FormData(e.target);
     
-    axios.post(url, formData).then((bb) =>{
-        console.log(bb);
-    });
+    // axios.post(url, formData).then((bb) =>{
+    //     console.log(bb);
+    // });
 }
 
 

@@ -6,15 +6,17 @@
         "/product/*": {
             "target": "http://localhost:5000"
         },
+
         "auth/*": {
             "target": "http://localhost:5000"
         }
     },
     "dependencies": {
         "axios": "^0.18.0",
-        "detect-node": "^2.0.3",
         "react": "^16.3.2",
         "react-dom": "^16.3.2",
+        "react-file-input": "^0.2.5",
+        "react-load-script": "0.0.6",
         "react-redux": "^5.0.7",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.1.1",
@@ -22,7 +24,6 @@
         "react-scripts": "1.1.4",
         "redux": "^4.0.0",
         "redux-form": "^7.0.1",
-        "redux-logger": "^3.0.6",
         "redux-thunk": "^2.2.0"
     },
     "scripts": {

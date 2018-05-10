@@ -5,10 +5,70 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="http://localhost:5000/product/upload" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" id="formfile">
+
         <h2>多图上传</h2>
-        <input type="file" name="logo">
-        <input type="submit" value="提交">
+        <input type="file" name="logo" id="image">
+        <input type="button" id="btn" value="提交">
     </form>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+<script type="text/javascript">
+    
+    $("#btn").click(function () {
+        var form_data = new FormData($("#formfile")[0]);
+        $.ajax({
+            type:'POST',
+            url:'http://localhost:5000/product/test',
+            processData: false,
+            contentType: false,
+            async: false,
+            cache: false,
+            data : form_data,
+            success: function(response){
+
+            }
+        });
+    });
+    
+//    $("#btn").click(function () {
+//        alert("here");
+//        var formData = new FormData($("#formfile"));
+//        $.ajax({
+//            url: 'http://localhost:5000/product/test',
+//            type: 'POST',
+//            data: formData,
+//            async: false,
+//            cache: false,
+//            contentType: false,
+//            processData: false,
+//            success: function (data) {
+//                if (200 === 200) {
+//                } else {
+//                }
+//            },
+//            error: function (err) {
+//                console.log("err", err);
+//            }
+//        })
+
+//        $("#form").load(function() {
+//            var text=$(this).contents().find("body").text();
+//            // 根据后台返回值处理结果
+//            alert(text);
+//        })
+
+//        var j=$.parseJSON(text);
+//        if(j.status!=0) {
+//            alert(j.msg);
+//        } else {
+//            alert('导入成功');
+//            //location.href='BookResourceList.jsp'
+//        }
+
+//    });
+</script>
 </body>
 </html>
