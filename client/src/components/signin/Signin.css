@@ -3,16 +3,20 @@
     padding: 0;
 }
 
-.signin-container {
+
+/* .signin-container {
     display: none;
-}
+} */
 
 .signin-back {
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     background-color: black;
     opacity: 0.5;
+    z-index: 99;
 }
 
 .signin-form {
@@ -22,10 +26,12 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999
 }
 
 .form-signin {
     margin: 0 15%;
+    color: white;
 }
 
 .signin-container h1 {
@@ -47,7 +53,7 @@
 .signin-close {
     right: 45px;
     top: 45px;
-    z-index: 5;
+    z-index: 100;
     position: absolute;
 }
 

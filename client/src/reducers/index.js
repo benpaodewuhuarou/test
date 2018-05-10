@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import authUser from './authReducer';
+import { authReducer, log, user } from './Reducer';
+import { routerReducer } from "react-router-redux";
 
 export default combineReducers({
-    auth: authUser
+    auth: authReducer,
+    log: log,
+    // user: user
+
 })

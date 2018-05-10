@@ -1,10 +1,6 @@
 * {
-    margin: o;
+    margin: 0;
     padding: 0;
-}
-
-.loginContainer {
-    display: none;
 }
 
 .logHead {
@@ -15,9 +11,14 @@
 
 .loginBack {
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    text-align: center;
 }
 
 .login {
@@ -26,7 +27,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    z-index: 4;
+    z-index: 999;
     text-align: center;
 }
 
@@ -36,15 +37,16 @@
     margin: auto;
 }
 
-.login-close {
-    right: 45px;
-    top: 45px;
-    z-index: 5;
-    position: absolute;
-}
-
 .md-32 {
     font-size: 50px;
+}
+
+.login-close {
+    color: black;
+    right: 45px;
+    top: 45px;
+    z-index: 100;
+    position: absolute;
 }
 
 .login-close:hover {

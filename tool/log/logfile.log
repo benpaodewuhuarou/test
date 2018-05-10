@@ -10,3 +10,10 @@
 [2018-05-07T15:20:41.809] [ERROR] secondhandmall - addProduct in productMongo error: ReferenceError: product is not defined
 [2018-05-07T15:20:41.812] [ERROR] secondhandmall - addProduct in productService error:ReferenceError: product is not defined
 [2018-05-07T15:20:41.812] [ERROR] secondhandmall - addProduct in productController error: ReferenceError: product is not defined
+[2018-05-07T17:54:26.288] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'logo' of undefined
+[2018-05-07T17:57:07.650] [ERROR] secondhandmall - upload in productController error: TypeError: Cannot read property 'logo' of undefined
+[2018-05-07T18:01:35.079] [ERROR] secondhandmall - upload in productController error: ReferenceError: files is not defined
+[2018-05-07T18:08:02.929] [ERROR] secondhandmall - upload in productController error: ReferenceError: files is not defined
+[2018-05-07T18:08:53.601] [ERROR] secondhandmall - upload in productController error: ReferenceError: files is not defined
+[2018-05-07T18:11:01.315] [ERROR] secondhandmall - upload in productController error: ReferenceError: files is not defined
+[2018-05-07T18:13:02.328] [ERROR] secondhandmall - upload in productController error: ReferenceError: files is not defined
