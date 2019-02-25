@@ -1,10 +1,11 @@
 /**
- * Created by shizekang on 3/28/2018.
+ * Created by zhiyangwang on 3/28/2018.
  */
 var userMongo = require("../model/mongodb/userMongo");
 var userES = require("../model/elasticsearch/userES");
 var userRedis = require("../model/redis/userRedis");
 var logger = require("../tool/getLoggerTool");
+var crypto = require('crypto');
 
 /**
  * add user
@@ -57,6 +58,7 @@ async function existEmail(email) {
  */
 async function login(user) {
     try {
+        user.password = crypto.createHash("md5").update(user.password).digest("hex");
         return await userES.login(user);
     } catch (e) {
         logger.error("login in userService error: " + e);

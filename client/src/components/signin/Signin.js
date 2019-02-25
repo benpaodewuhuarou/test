@@ -2,31 +2,47 @@ import React, { Component } from 'react';
 import './Signin.css';
 import {connect}from'react-redux';
 import {bindActionCreators}from 'redux';
-import {signclose}from '../../actions';
+import {signclose,loginerrormessage}from '../../actions';
 import axios from 'axios';
-class Signin extends Component {
-  handleSumbit(e){
-    console.log('here');
-    // e.preventDefault();
-    // const url = '/login';
-    // const formData = new FormData(e.target);
-    
-    // axios.post(url, formData).then((bb) =>{
-    //     console.log(bb);
-    // });
-}
+import { Link,Redirect} from 'react-router-dom';
 
+
+class Signin extends Component {
+    handleSumbit=async(e)=>{
+    e.preventDefault();
+    const url = '/auth/login';
+    const formData = new FormData(e.target);
+    let username = formData.get('username');
+    let password = formData.get('password');
+
+    let data ={
+      username:username,
+      password:password
+    }
+   
+    let user = await axios.post('/auth/login',data);
+    if(user){
+      this.props.history.push('/home');
+    }else{
+      this.props.loginerrormessage();
+    }
+}
+   handleClick=(e)=>{
+    console.log('link has been click');
+   }
 
   render() {
     return (
       <div className='signin-container'>
-        <div className='signin-close' onClick={this.props.signClose}>
+        <Link to={'/home'} >
+        <div className='signin-close' onClick={this.handleClick}>
           <i className="material-icons md-32">close</i>
         </div>
+        </Link>
         <div className='signin-back'>
         </div>
         <div className='signin-form'>
-          <form class="form-signin" onSubmit={this.handleSubmit}>
+          <form class="form-signin" onSubmit={this.handleSumbit}>
             <h1 class="h3 mb-3 font-weight-normal"> Sign in</h1>
             <div className='signin-input'>
               <label for="userName" class="sr-only">Username</label>
@@ -42,6 +58,9 @@ class Signin extends Component {
                 remenber me
                   </label>
             </div>
+            <div className='sigin-error-message'>
+                {this.props.message}
+            </div>
             <div className='signin-input'>
               <button class="btn  btn-primary " type="submit">Sign in</button>
             </div>
@@ -54,9 +73,14 @@ class Signin extends Component {
     )
   }
 }
+function mapStateToprops(state) {
+  return { 
+          message:state.errormessage
+  };
+}
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    signClose:signclose
+    loginerrormessage:loginerrormessage
   }, dispatch);
 }
 export default connect(null,mapDispatchToProps)(Signin);          

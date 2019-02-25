@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 4/9/2018.
+ * Created by zhiyangwang on 4/9/2018.
  */
 var productEs = require("../model/elasticsearch/productEs");
 var productMongo = require("../model/mongodb/productMongo");

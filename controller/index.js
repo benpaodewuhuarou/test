@@ -9,8 +9,11 @@ const constructorMethod = (app, passport) => {
     app.use("/auth", authRoutes(passport));
     app.use('/product', productController());
     app.use("/user", userController);
-    app.get('/sucess', (req, res) => {
-            res.send('fuck');
+    app.get('/sucess', (res, rep) => {
+        rep.send(true);
+    })
+    app.get('/failure', (res, rep) => {
+            rep.send(false);
         })
         //   app.use("/users", userRoutes);
         //   app.get("/about", (req, res) => {

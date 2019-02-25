@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 4/9/2018.
+ * Created by zhiyangwang on 4/9/2018.
  */
 var esClient = require("./getClientTool");
 var logger = require('../../tool/getLoggerTool');
@@ -14,8 +14,8 @@ async function getIndexProduct() {
             index: "product",
             type: "product",
             body: {
-                sort: [{"date": {"order": "desc"}}],
-                query: {match_all: {}},
+                sort: [{ "date": { "order": "desc" } }],
+                query: { match_all: {} },
                 size: 20
             }
         });
@@ -45,8 +45,8 @@ async function getProductByType(type, from, size) {
             index: "product",
             type: "product",
             body: {
-                sort: [{"date": {"order": "desc"}}],
-                query: {match: {type: type}},
+                sort: [{ "date": { "order": "desc" } }],
+                query: { match: { type: type } },
                 from: from,
                 size: size
             }

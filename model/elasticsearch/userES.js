@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 3/27/2018.
+ * Created by zhiyangwang on 3/27/2018.
  */
 var esClient = require("./getClientTool");
 var logger = require('../../tool/getLoggerTool');
@@ -10,7 +10,9 @@ var logger = require('../../tool/getLoggerTool');
  * @returns {Promise.<*>}
  */
 async function addUser(user) {
+    console.log('adduser here');
     try {
+
         var response = await esClient.index({
             index: 'user',
             id: user.username,
@@ -38,11 +40,11 @@ async function login(user) {
                 query: { bool: { must: [{ match: { username: user.username } }, { match: { password: user.password } }] } }
             }
         });
-        var user;
+        var loginUser;
         if (response.hits.hits.length > 0) {
-            user = response.hits.hits[0]._source;
+            loginUser = response.hits.hits[0]._source;
         }
-        return user;
+        return loginUser;
     } catch (e) {
         logger.error("login in userEs error: " + e);
         throw e;

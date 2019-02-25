@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 5/4/2018.
+ * Created by zhiyangwang on 5/4/2018.
  */
 var getCollectionTool = require("./getCollectionTool");
 var logger = require('../../tool/getLoggerTool');
@@ -15,4 +15,4 @@ async function addProduct(product) {
     }
 }
 
-module.exports = {addProduct: addProduct};
+module.exports = { addProduct: addProduct };

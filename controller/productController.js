@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 4/9/2018.
+ * Created by zhiyangwang on 4/9/2018.
  */
 const productService = require("../service/productService");
 const logger = require("../tool/getLoggerTool");
@@ -34,6 +34,8 @@ module.exports = () => {
      deleted: 'false' }]
  * @returns {Promise.<void>}
  */
+
+    //router.use(multiparty({uploadDir: "./resource/images"}));
 
     router.get('/', (res, req) => {
         req.send('ddddd');
@@ -92,15 +94,15 @@ module.exports = () => {
     });
 
     router.put("/addProduct", async function(req, res) {
-        // console.log('addproduct here');
-        // var files = req.files.logo;
-        // console.log(files.path);
+        console.log(req.body);
         var result = {};
         try {
             var id = uuid.v4();
             var product = req.body;
+            console.log(product);
             product.itemId = id;
             product.date = Date.now();
+            product.username = req.user.username;
             var product = await productService.addProduct(product);
             result["status"] = 200;
             result["message"] = "add product successfully";
@@ -114,34 +116,19 @@ module.exports = () => {
     });
 
     router.post("/upload", multi, function(req, res, next) {
-        console.log(req.files);
-        // for (var i = 0; i < req.files.length; i++) {
-        // //
-        // }
         var path = req.files.file.path;
-        var image = path.substring(path.lastIndexOf("\\") + 1);
-        var newpath = __dirname + "/resource/images/" + image;
+        var image;
+        if (path.charAt(0) == "/") {
+            image = path.substring(path.lastIndexOf("/") + 1);
+        } else {
+            image = path.substring(path.lastIndexOf("\\") + 1)
+        }
+        var newpath = __dirname + "/../client/src/components/picture/" + image;
+        console.log(newpath);
         fs.rename(path, newpath, function() {
-                res.send("/resource/images/" + image);
-            })
-            // var oldpath = __dirname + "/../" + req.file.path;
-            // var newpath = __dirname + ;
-            // fs.rename(oldpath, newpath, function () {
-            //
-            // })
-            // var result = {};
-            // try {
-            //     var files = req.files;
-            //     console.log(files.path);
-            //     result["status"] = 200;
-            //     result["message"] = "upload successfully";
-            //     result["data"] = files.path;
-            // } catch (e) {
-            //     logger.error("upload in productController error: " + e);
-            //     result["status"] = 400;
-            //     result["message"] = "upload fail";
-            // }
-            // res.send(result);
+            res.send("picture/" + image);
+        });
+
     });
 
     router.get("/getProductById", async function(req, res) {

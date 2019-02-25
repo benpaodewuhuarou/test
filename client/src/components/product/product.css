@@ -12,9 +12,19 @@
     line-height: 500px;
 }
 
+.product-1 {
+    height: 100%;
+    width: 100%;
+}
+
+.individual-img {
+    background-color: black;
+    height: 90%;
+    width: 90%;
+}
+
 .product-user {
     height: 500px;
-    border: 1px solid black;
 }
 
 .product-chat {
@@ -32,7 +42,14 @@
 }
 
 .pi {
-    border: 1px solid black;
     height: 70px;
     margin: 40px 20px;
+}
+
+.product-user-name,
+.product-user-location,
+.product-user-price,
+.product-user-description {
+    background-color: #7A7676;
+    line-height: 70px;
 }

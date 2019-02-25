@@ -1,0 +1,48 @@
+.product-row-container {
+    margin-top: 100px;
+    border: 1px solid black;
+}
+
+.product-line {
+    padding: 0;
+    position: relative;
+    height: 400px;
+    width: 250px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.cat-product-image {
+    position: absolute;
+    width: 65%;
+    height: 230px;
+    border: 1px solid black;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cat-product-location {
+    height: 35px;
+    width: 65%;
+    position: absolute;
+    border: 1px solid red;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cat-product-price {
+    height: 35px;
+    width: 65%;
+    position: absolute;
+    border: 1px solid red;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.product-inner-image {
+    height: 230px;
+    width: 100%;
+}

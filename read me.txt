@@ -1,0 +1,5 @@
+Our project uses Amazon Web Service database, so we dont have to set anything for database. 
+
+1. Just need to install all packages. 
+2. cd into the project root, npm start
+3. cd into client directory, npm start

@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 3/28/2018.
+ * Created by zhiyangwang on 3/28/2018.
  */
 const userService = require("../service/userService");
 const logger = require("../tool/getLoggerTool");
@@ -21,7 +21,8 @@ const router = express.Router();
  * @param user
  * @returns {Promise.<boolean>}
  */
-router.put("/addUser", async function (req, res) {
+
+router.put("/addUser", async function(req, res) {
     var result = {};
     try {
         var user = req.body;
@@ -45,7 +46,8 @@ router.put("/addUser", async function (req, res) {
  * check if the username exists, if username has exsited, return true, if not return false;
  * @returns {Promise.<boolean>}
  */
-router.get("/existUser", async function (req, res) {
+router.get("/existUser", async function(req, res) {
+    console.log('dd');
     var result = {};
     try {
         var username = req.query.username;
@@ -65,7 +67,7 @@ router.get("/existUser", async function (req, res) {
  * @param email
  * @returns {Promise.<{object}>}
  */
-router.get("/existEmail", async function (req, res) {
+router.get("/existEmail", async function(req, res) {
     var result = {};
     try {
         var email = req.query.email;

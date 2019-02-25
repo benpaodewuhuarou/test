@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 3/28/2018.
+ * Created by zhiyangwang on 3/28/2018.
  */
 var redis = require("redis");
 const bluebird = require("bluebird");
@@ -89,5 +89,3 @@ module.exports = {
 // }
 //
 // test();
-
-

@@ -8,13 +8,13 @@ module.exports = passport => {
     });
     router.post('/login',
         passport.authenticate('local', {
-            failureRedirect: '/login',
+            failureRedirect: '/failure',
             successRedirect: '/sucess'
-
         }))
+
     router.get('/logout', (req, res) => {
         req.logout();
-        res.redirect('/auth/');
+        res.send('logout')
     })
     router.get('/sucess', (req, res) => {
         res.send('sucess');
@@ -22,8 +22,8 @@ module.exports = passport => {
     router.get('/current_user', (req, res) => {
         res.send(req.user);
     })
-    router.get('/login', (req, res) => {
-        res.send('failure');
+    router.get('/failure', (req, res) => {
+        res.send(flase);
     })
 
     return router;

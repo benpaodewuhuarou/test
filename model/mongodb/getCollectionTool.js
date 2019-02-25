@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 3/27/2018.
+ * Created by zhiyangwang on 3/27/2018.
  */
 var connection = require("./getAtlasConnectionTool");
 
@@ -8,10 +8,9 @@ var connection = require("./getAtlasConnectionTool");
  * @returns {Promise.<*>}
  */
 async function getCollection(collectionName) {
-        var conn = await connection.getConn();
-        collection = await conn.db("shmall").collection(collectionName);
-        return collection;
+    var conn = await connection.getConn();
+    collection = await conn.db("second").collection(collectionName);
+    return collection;
 }
 
 module.exports = { getCollection: getCollection };
-

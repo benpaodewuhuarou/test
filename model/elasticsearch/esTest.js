@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 3/24/2018.
+ * Created by zhiyangwang on 3/24/2018.
  */
 const elasticsearch = require('elasticsearch');
 const esClient = new elasticsearch.Client({
@@ -124,9 +124,9 @@ esClient.search({
     type: 'user',
     body: {
         //sort: [{date: {order: "asc"}}],
-        query: {match_all : {}}
+        query: { match_all: {} }
     }
-}, function (error, response) {
+}, function(error, response) {
     // console.log(response);
     for (var i = 0; i < response.hits.hits.length; i++) {
         console.log(response.hits.hits[i]);

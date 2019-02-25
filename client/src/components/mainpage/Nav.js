@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../picture/1.jpg';
 import './nav.css';
+import { Link, Redirect } from 'react-router-dom';
 class Nav extends Component {
     state = {
         r: 'ele',
@@ -39,55 +40,69 @@ class Nav extends Component {
                     <ul className='nav-list col-sm-12'>
                         <li className='ele' id='ele' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a href='#'>
+                                <Link to={`/productType?electric`}>
                                 <div className='nav-list-title' id='ele'>
                                     <i class="material-icons" id='ele'>kitchen</i>
                                     <p id='ele'>Electronics</p>
                                 </div>
+                                </Link>
                             </a>
                         </li>
                         <li className='clo' id='clo' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?clothing`}>
                                 <div className='nav-list-title' id='clo'>
                                     <i class="material-icons" id='clo'>favorite</i>
                                     <p id='clo'>Clothing</p>
                                 </div>
+                                </Link>
                             </a>
 
                         </li>
                         <li className='spo' id='clo' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?shoes`}>
                                 <div className='nav-list-title' id='clo'>
                                     <i class="material-icons" id='clo'>landscape</i>
-                                    <p id='clo'>Sports</p>
+                                    <p id='clo'>Shoes</p>
                                 </div>
+                                </Link>
                             </a></li>
                         <li className='hea' id='hea' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?furniture`}>
                                 <div className='nav-list-title' id='hea'>
                                     <i class="material-icons" id='hea'>face</i>
-                                    <p id='hea'>Health</p>
+                                    <p id='hea'>Furniture</p>
                                 </div>
+                                </Link>
                             </a></li>
                         <li className='car' id='car' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?daily use`}>
                                 <div className='nav-list-title' id='car'>
-                                    <i id='car' class="material-icons">directions_car</i>
-                                    <p id='car'>car</p>
+                                    <i id='car' class="material-icons">favorite</i>
+                                    <p id='car'>Daily use</p>
                                 </div>
+                                </Link>
                             </a></li>
                         <li className='boo' id='boo' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?book`}>
                                 <div className='nav-list-title' id='boo'>
                                     <i class="material-icons" id='boo'>book</i>
                                     <p id='boo'>Book</p>
                                 </div>
+                                </Link>
                             </a></li>
                         <li className='hom' id='hom' onMouseEnter={this.titleEnter} onMouseLeave={this.titleLeave}>
                             <a>
+                                <Link to={`/productType?car`}>
                                 <div className='nav-list-title' id='hom'>
                                     <i class="material-icons" id='hom'>home</i>
-                                    <p id='hom'>Home Appliance</p>
+                                    <p id='hom'>Car</p>
                                 </div>
+                                </Link>
                             </a></li>
                     </ul>
                     {/* </div> */}
@@ -95,428 +110,306 @@ class Nav extends Component {
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'ele' ? 'row sublist ele-show' : 'row  sublist'}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?electric`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Computer</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?electric`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>FACE</p>
+                                    <p>Pad</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?electric`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>Watch</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?electric`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>TV</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?electric`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>Gopro</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
+                            </Link></li>
+
 
                     </ul>
                 </div>
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'clo' ? 'row sublist clo-show' : 'row  sublist'}>
-                    
+
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?clothing`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Pants</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?clothing`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>Jackets</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?clothing`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>T-shirt</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?clothing`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>Sweather</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?clothing`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>Coat</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
+                            </Link></li>
 
                     </ul>
                 </div>
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'spo' ? 'row sublist spo-show' : 'row  sublist'}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Huarache</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>Jazz shoe</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>Jelly shoes</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>Jutti</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>Kitten heel</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?shoes`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Loafers</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
-
+                            </Link></li>
                     </ul>
                 </div>
-                <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'hea' ? 'row sublist hea-show'  : 'row  sublist'}>
+                <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'hea' ? 'row sublist hea-show' : 'row  sublist'}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Bed</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>Futon</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>Hammock</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>Headboard</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>Sofa</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?furniture`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Mattress</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
-
+                            </Link></li>
                     </ul>
                 </div>
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'car' ? 'row sublist car-show' : 'row  sublist '}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?daily use`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Cup</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?daily use`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>Bottle</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?daily use`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>Clippers</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?daily use`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>Mirror</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?daily use`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>Nails cut</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
-
+                            </Link></li>
                     </ul>
                 </div>
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'boo' ? 'row sublist boo-show' : 'row  sublist'}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Java</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>C++</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>Python</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>Nodejs</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>.net</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>C</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?book`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>C#</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
-
+                            </Link></li>
                     </ul>
                 </div>
                 <div onMouseEnter={this.contentEnter} onMouseLeave={this.contentLeave} className={this.state.hover && this.state.name === 'hom' ? 'row sublist hom-show' : 'row  sublist'}>
                     <ul className=' col-sm-12 '>
                         <li>
-                            <a>
+                            <Link to={`/productType?car`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
+                                    <p>Convertible</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?car`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">face</i>
-                                    <p>Health</p>
+                                    <p>coupe</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?car`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">directions_car</i>
-                                    <p>car</p>
+                                    <p>sedan</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?car`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">book</i>
-                                    <p>Book</p>
+                                    <p>sport</p>
                                 </div>
-                            </a></li>
+                            </Link></li>
                         <li>
-                            <a>
+                            <Link to={`/productType?car`}>
                                 <div className='sublist-title'>
                                     <i class="material-icons">home</i>
-                                    <p>Home Appliance</p>
+                                    <p>crossover</p>
                                 </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">landscape</i>
-                                    <p>Sports</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">face</i>
-                                    <p>Health</p>
-                                </div>
-                            </a></li>
-                        <li>
-                            <a>
-                                <div className='sublist-title'>
-                                    <i class="material-icons">directions_car</i>
-                                    <p>car</p>
-                                </div>
-                            </a></li>
+                            </Link></li>
 
                     </ul>
                 </div>

@@ -23,6 +23,7 @@ passport.deserializeUser(async(username, done) => {
 
 passport.use(new localStrategy(
     async(username, password, done) => {
+
         let user = {
             username: username,
             password: password

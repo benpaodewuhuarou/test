@@ -1,5 +1,5 @@
 /**
- * Created by shizekang on 5/8/2018.
+ * Created by zhiyangwang on 5/8/2018.
  */
 const purchaseService = require("../service/purchaseService");
 const logger = require("../tool/getLoggerTool");
@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const uuid = require("node-uuid");
 
-router.put("/addPurchase", async function (req, res) {
+router.put("/addPurchase", async function(req, res) {
     var result = {};
     try {
         var purchase = req.body;
@@ -29,4 +29,4 @@ router.put("/addPurchase", async function (req, res) {
     res.send(result);
 });
 
-module.exports=router;
+module.exports = router;

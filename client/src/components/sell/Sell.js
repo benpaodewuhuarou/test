@@ -1,104 +1,61 @@
 import React, { Component } from 'react';
 import './sell.css';
 import axios from 'axios'
-
+import { Link,withRouter} from 'react-router-dom';
 class Sell extends Component {
-    constructor() {
-        super();
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    // onFormSubmit(e){
-    //     e.preventDefault();
-    //     console.log("fileUpload");
-    //     const url = '/product/upload';
-    //     const formData = new FormData();
-    //     formData.append('file',document.getElementById("image").files[0]);
-    //     const config = {
-    //         headers: {
-    //             'content-type': 'multipart/form-data'
-    //         }
-    //     }
-    //     axios.post(url, formData,config).then(function (bb) {
-    //         console.log(bb);
-    //     });
-    // }
 
+    async onFormSubmit(e){
+        e.preventDefault();
+        console.log("fileUpload");
+        const url = '/product/upload';
+        const formData = new FormData();
+        formData.append('file',document.getElementById("image").files[0]);
+        var imagedata = await axios.post(url, formData);
+        var imagepath = [];
+        imagepath.push(imagedata.data);
+        var product = {
+            title: document.getElementById("title").value,
+            email: document.getElementById("email").value,
+            price: parseFloat(document.getElementById("price").value),
+            phoneNumber: document.getElementById("phoneNumber").value,
+            location: document.getElementById("location").value,
+            detail: document.getElementById("detail").value,
+            image: imagepath,
+            type: document.getElementById("type").value
+        }
+        var result = await axios.put("/product/addProduct", product);
+        if(result){
+            this.props.history.push('/home');
+        }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        var formdata = new FormData(document.getElementById("fuck")[0]);
-        axios({ url: '/product/upload',
-         method: 'POST', 
-         data: formdata, 
-         async: false, 
-         cache: false,
-          contentType: false, 
-          processData: false, 
-          success: function (data) 
-          { if (200 === 200) { 
-              alert("111"); } 
-              else { } 
-              console.log('imgUploader upload success, data:', data); }, 
-              error: function (err) { console.log("err", err); alert("222") } });
-
-        
-        // const data = new FormData(event.target);
-        // let title=data.get('itemTitle');
-        // let type='3C';
-        // let price=parseInt(data.get('price'));
-        // let phoneNumber=data.get('phoneNumber');
-        // let email = data.get('email');
-        // let detial = data.get('Textarea');
-        // //let files = data.get('image');
-        // //let files = document.getElementById("fuck").value;
-        // console.log(files);
-        // // let files = (image)=>{
-        // //     return axios.post('/product/upload',{image}).then((url)=>{
-        // //         return url;
-        // //     })
-        // // }
-        // let location = data.get('state');
-        // let result ={title,type,price,phoneNumber,email,phoneNumber,email,detial,files,location};
-
-
-        // axios.post('/product/upload', { result }).then((url) => {
-        //     console.log(url);
-        // })
-
-        // axios.put('/product/addProduct',{result}).then((e)=>{
-        //   console.log(e);
-        // })
-        // fetch('/api/form-submit-url', {
-        //   method: 'POST',
-        //   body: data,
-        // });
     }
 
-    render() {
-        return (
+    render(){
+        return(
+            <body>
             <div className='sell-container'>
-                <form className='innerForm' onSubmit={this.handleSubmit} >
+                <form className='innerForm' id="formproduct" onSubmit={this.onFormSubmit}>
                     <div class="form-group">
                         <label for="title">item title</label>
-                        <input type="text" class="form-control" name="itemTitle" aria-describedby="itemlHelp" placeholder="item title" />
+                        <input type="text" class="form-control" name="itemTitle" id="title" aria-describedby="itemlHelp" placeholder="item title" required />
                         <small id="itemlHelp" class="form-text text-muted">a brief stunning title please....</small>
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" />
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required />
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="price">expected price</label>
-                        <input type="text" class="form-control" name="price" placeholder="input a price range" />
+                        <input type="text" class="form-control" name="price" id="price" placeholder="input a price range" required />
                     </div>
                     <div class="form-group">
                         <label for="phone-number">Phone Number</label>
-                        <input type="text" class="form-control" name="phoneNumber" placeholder="input phoneNumber" />
+                        <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="input phoneNumber" required />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" name="state" data-dropup-auto="false" data-size="5">
+                        <label for="exampleFormControlSelect1">Location</label>
+                        <select class="form-control" name="state" id="location" data-dropup-auto="false" data-size="5">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -152,21 +109,36 @@ class Sell extends Component {
                             <option value="WY">Wyoming</option>
                         </select>
                     </div>
-                    <div class="form-group" >
-                    <form id="image" method="post" enctype="">
-                        <label for="exampleFormControlFile1">Example file input</label>
-                        <input type="file" class="form-control-file" id="fuck" name="image" aria-describedby="image" />
-                        <small id="image" class="form-text text-muted">max for 5 pictures</small>
-                    </form>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Type</label>
+                        <select class="form-control" name="type" id="type" data-dropup-auto="false">
+                            <option value="electric">electric</option>
+                            <option value="clothing">clothing</option>
+                            <option value="shoes">shoes</option>
+                            <option value="furniture">furniture</option>
+                            <option value="daily use">daily use</option>
+                            <option value="book">book</option>
+                            <option value="car">car</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" name="Textarea" rows="5"></textarea>
-
+                        <label>PhotoUpload</label>
+                        <input type="file" name="logo" id="image" required />
                     </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Detail</label>
+                        <textarea class="form-control" name="Textarea" id="detail" rows="5" required></textarea>
+                    </div>
+
+                    <label id="wrongMessage"></label>
+                    <input class="btn  btn-primary" type="submit" id="btn" value="Submit" />
                 </form>
             </div>
-        )}
+            </body>
+        )
     }
 
-    export default Sell;
+}
+
+export default withRouter(Sell);
+
